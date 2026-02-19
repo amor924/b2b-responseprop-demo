@@ -1,0 +1,7 @@
+{
+  "model_name": "b2b_propensity_logistic",
+  "model_type": "LogisticRegression",
+  "train_rows": 45000,
+  "feature_count": 20,
+  "train_date": "2026-02-19 20:31:32.438721+00:00"
+}
