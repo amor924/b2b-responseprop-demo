@@ -89,7 +89,7 @@ Reports are saved to `reports/` on each run.
 score distributions. PSI > 0.2 triggers a warning, indicating model recalibration may be needed.
 
 In production, this check would run on a schedule (e.g., post each campaign wave) with results
-surfaced in a monitoring dashboard.
+surfaced in a monitoring dashboard. 
 
 ---
 
@@ -124,7 +124,7 @@ Logistic Regression is the deliberate starting point for propensity modeling bec
 
 Tree-based models (XGBoost, LightGBM) can improve lift, but introduce complexity in monitoring and interpretation — a tradeoff worth evaluating once the baseline is validated.
 
-**If marketing targets the top 20% of ranked accounts, the response rate increases from ~19.6% (baseline) to ~27%, representing ~1.4x lift** — demonstrating how the model directly informs campaign prioritization under budget constraints.
+**For illustration, targeting the top 20% of ranked accounts increases response rate from ~19.6% (baseline) to ~27% (~1.4x lift).** — demonstrating how the model directly informs campaign prioritization under budget constraints.
 
 **Natural next steps:**
 - Tree-based model comparison (lift improvement vs. interpretability tradeoff)
