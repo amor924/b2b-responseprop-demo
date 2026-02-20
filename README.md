@@ -1,8 +1,8 @@
-# B2B Marketing Propensity Model — Clean-Room Demo
+# B2B Marketing Propensity Model - Clean-Room Demo
 
 > **Context for reviewers:** This is a clean-room, non-confidential demonstration project built
 > on a synthetic dataset. It mirrors the modeling workflow I apply in production work, which I
-> cannot share due to confidentiality. The goal is to show end-to-end Python/ML fluency —
+> cannot share due to confidentiality. The goal is to show end-to-end Python/ML fluency -
 > from data prep through scoring and drift monitoring.
 
 ---
@@ -10,7 +10,7 @@
 ## Business Problem
 
 In B2B marketing, campaign budgets are finite. Rather than contacting all accounts, marketing
-teams rank accounts by their likelihood to respond and target the top X% — maximizing conversion
+teams rank accounts by their likelihood to respond and target the top X% - maximizing conversion
 rate per dollar spent.
 
 This model predicts `response_flag` (did a B2B account convert within 30 days of campaign
@@ -52,13 +52,13 @@ propensity-modeling-mini/
 
 ## Modeling Approach
 
-**Algorithm:** Logistic Regression with L2 regularization (intentional baseline choice — see note below)
+**Algorithm:** Logistic Regression with L2 regularization (intentional baseline choice - see note below)
 
 **Feature engineering** (in `src/data.py`):
-- `renewal_window_flag` — account within 3 months of contract end (high-signal business rule)
-- `high_engagement_flag` — ≥5 website visits in past 30 days
-- `large_account_flag` — company size ≥800 employees
-- `revenue_per_employee` — proxy for account health / complexity
+- `renewal_window_flag` - account within 3 months of contract end (high-signal business rule)
+- `high_engagement_flag` - ≥5 website visits in past 30 days
+- `large_account_flag` - company size ≥800 employees
+- `revenue_per_employee` - proxy for account health / complexity
 - Binned versions of `company_size`, `website_visits_30d`, `contract_remaining_months` (EDA-informed)
 
 **Preprocessing pipeline** (in `src/features.py`):
@@ -118,13 +118,13 @@ notebooks/01_build_train_eval.ipynb
 ## Why Logistic Regression as the Baseline
 
 Logistic Regression is the deliberate starting point for propensity modeling because:
-1. **Coefficients are directly interpretable** — easy to explain to marketing stakeholders
-2. **Scores are rank-orderable** — sufficient for top-X% targeting decisions
-3. **Fast to train and audit** — establishes a performance floor before adding complexity
+1. **Coefficients are directly interpretable** - easy to explain to marketing stakeholders
+2. **Scores are rank-orderable** - sufficient for top-X% targeting decisions
+3. **Fast to train and audit** - establishes a performance floor before adding complexity
 
-Tree-based models (XGBoost, LightGBM) can improve lift, but introduce complexity in monitoring and interpretation — a tradeoff worth evaluating once the baseline is validated.
+Tree-based models (XGBoost, LightGBM) can improve lift, but introduce complexity in monitoring and interpretation - a tradeoff worth evaluating once the baseline is validated.
 
-**For illustration, targeting the top 20% of ranked accounts increases response rate from ~19.6% (baseline) to ~27% (~1.4x lift).** — demonstrating how the model directly informs campaign prioritization under budget constraints.
+**For illustration, targeting the top 20% of ranked accounts increases response rate from ~19.6% (baseline) to ~27% (~1.4x lift).** - demonstrating how the model directly informs campaign prioritization under budget constraints.
 
 **Natural next steps:**
 - Tree-based model comparison (lift improvement vs. interpretability tradeoff)
